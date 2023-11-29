@@ -100,8 +100,34 @@ Pada Informasi Variable terhadap data users, data memiliki missing value pada va
     margin-left: auto;
     margin-right: auto;'/>
   </div><br>
-  
+
+terlihat umur rata-rata user berada disekitaran 25-35 tahun.
+
 ## Data Preparation
+Mempersiapkan data sangatlah penting dalam proses pengembangan model machine learning. pada proyek ini sangat penting melakukan _Data Preparation_. Jika data tidak dipersiapkan dengan benar maka akan mengganggu hasil analisis terhadap data dan pada modelan machine learning nantinya serta _Data Preparation_ sangat penting untuk meningkatkan kualitas data
+
+Pada Proyek ini akan melakukan beberapa tahapan _Data Preparation_ sebagai berikut:
+### Integrasi Data
+Pada tahap ini menggabungkan data `Books` dan `Ratings` agar dapat digunakan dalam pemodelan nantinya. untuk melakukan penggabungan data, dapat menggunakan code berikut:
+
+```
+books_rating =  pd.merge(ratings, books, on='ISBN', how='left')
+```
+
+### Missing Value
+Pada proses penggabung bisa saja terdapat missing value, sehingga perlu melakukan pengecekan agar tidak terjadi error nantinya dalam proses pemodelan. Pada DataFrame terdapat missing value berjumlah 118.648 pada variable `Book-Title`, `Book-Author`, `Year-Of-Publication` dan `Publisher`. Untuk mengatasi ini akan melakukan penghapusan pada data yang terdapat missing value dengan code berikut :
+
+```
+books_clean = books_rating.dropna()
+```
+
+Sebelumnya, terdapat rating yang bernilai 0, pada dasarnya rating tidak dimulai dari 0 melainkan dari satu. penyebab rating 0 bisa berbagai hal seperti pengguna tidak mengisi penilaian sehingga sistem akan memasukan nilai 0. untuk itu akan melakukan penghapusan juga pada data yang memiliki rating 0
+### Duplicated
+Pada sebuah data bisa terdapat duplikat, karena dalam pemodelan ini hanya akan menggunakan data unik, sehingga akan melakukan pembersihan pada data yang duplikat dengan code berikut:
+```
+preparation = books_clean.drop_duplicates('placeID')
+```
+
 ## Modelling and Result
 ## Evaluation
 ## Conclusion
