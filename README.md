@@ -83,14 +83,24 @@ Pada Informasi Variable terhadap data Ratings, data tidak memiliki suatu error a
 
 Terdapat 105.283 user yang melakukan penilai terhadap 340556 buku. untuk penyebaran rating dapat dilihat sebagai berikut:
 
-_gambar hist rating_ 
 
+<div>
+    <img src="https://github.com/ahdithya/book-recommendation/assets/91508590/adf69bff-3f13-4503-a109-6b8524c22ced"  style='display: block;
+    margin-left: auto;
+    margin-right: auto;'/>
+  </div><br>
 Jumlah users yang menilai rating 0 mencapai 700.000 sedangkan pada rating yang lain berada dibawah 200.000.
 
 ##### Users
 Pada Informasi Variable terhadap data users, data memiliki missing value pada variable age. Jumlah User yang terdaftar pada data users adalah 105.283. Selanjutnya pada umur pengguna sebagai berikut
 
-_gambar hist user_
+
+<div>
+    <img src="https://github.com/ahdithya/book-recommendation/assets/91508590/ef8b94c0-3024-4774-b7b6-e4a4ed1e39ff"  style='display: block;
+    margin-left: auto;
+    margin-right: auto;'/>
+  </div><br>
+  
 ## Data Preparation
 ## Modelling and Result
 ## Evaluation
