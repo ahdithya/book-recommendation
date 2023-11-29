@@ -122,10 +122,12 @@ books_clean = books_rating.dropna()
 ```
 
 Sebelumnya, terdapat rating yang bernilai 0, pada dasarnya rating tidak dimulai dari 0 melainkan dari satu. penyebab rating 0 bisa berbagai hal seperti pengguna tidak mengisi penilaian sehingga sistem akan memasukan nilai 0. untuk itu akan melakukan penghapusan juga pada data yang memiliki rating 0
+
 ### Duplicated
 Pada sebuah data bisa terdapat duplikat, karena dalam pemodelan ini hanya akan menggunakan data unik, sehingga akan melakukan pembersihan pada data yang duplikat dengan code berikut:
+
 ```
-preparation = books_clean.drop_duplicates('placeID')
+preparation = books_clean.drop_duplicates('ISBN')
 ```
 
 ## Modelling and Result
