@@ -1,4 +1,4 @@
-	# Project Book Recommendation
+# Project Book Recommendation
 
 Disusun oleh: Aditya Atallah
 
@@ -11,6 +11,8 @@ Sistem sekomendasi buku adalah salah sistem rekomendasi yang digunakan untuk mem
 Berdasarkan hal itu, sistem rekomendasi ini memberikan manfaat bagi pengguna, pelaku industri buku dan masyarakat umum. yaitu menemukan buku yang sesua keinginan pengguna, meningkatkan penjualan pelaku industri serta meningkatkan keingintahuan dan minat membaca masyarakat
 
 ## Bussines Understanding
+Implementasi sistem rekomendasi buku dapat menciptakan pengalaman  yang lebih personal dan memuaskan bagi pelanggan, memperluas penjualan melalui cross-selling, meningkatkan eksplorasi buku di luar kategori populer, membangun komunitas pembaca yang kuat, dan meningkatkan akurasi rekomendasi melalui analisis sentimen. Penerapan sistem rekomendasi pada amazon. Amazon menggunakan algoritma yang canggih untuk memberikan rekomendasi produk, termasuk buku, berdasarkan sejarah pembelian, perilaku penelusuran, dan preferensi pengguna. Hasilnya adalah peningkatan konversi penjualan dan meningkatnya kepuasan pelanggan.
+
 ### Problem Statement
 - Bagaimana cara menemukan buku yang relevan dengan pengguna?
 - Bagaimana cara sistem rekomendasi buku dapat memberikan buku yang sesuai minat pengguna?
@@ -91,7 +93,7 @@ Terdapat 105.283 user yang melakukan penilai terhadap 340556 buku. untuk penyeba
     margin-right: auto;'/>
   </div><br>
 
-Jumlah users yang menilai rating 0 mencapai 700.000 sedangkan pada rating yang lain berada dibawah 200.000.
+Jumlah users yang menilai rating 0 mencapai 700.000 sedangkan pada rating yang lain berada dibawah 200.000. Pada rating 0 mungkin menunjukkan bahwa sejumlah besar pengguna memberikan nilai rendah atau tidak puas terhadap buku, akan tetapi rating dimulai dari 1 sehingga kemungkinan rating 0 dihasilkan oleh kesalahan sistem. penyebaran rating yang tidak sehimbang antara rating bernilai 0 dan lainnya juga dapat mempengaruhi sistem rekomendasi. 
 
 ##### Users
 Pada Informasi Variable terhadap data users, data memiliki missing value pada variable age. Jumlah User yang terdaftar pada data users adalah 105.283. Selanjutnya pada umur pengguna sebagai berikut
@@ -121,7 +123,10 @@ Pada proses penggabung bisa saja terdapat missing value, sehingga perlu melakuka
 books_clean = books_rating.dropna()
 ```
 
-Sebelumnya, terdapat rating yang bernilai 0, pada dasarnya rating tidak dimulai dari 0 melainkan dari satu. penyebab rating 0 bisa berbagai hal seperti pengguna tidak mengisi penilaian sehingga sistem akan memasukan nilai 0. untuk itu akan melakukan penghapusan juga pada data yang memiliki rating 0
+Sebelumnya, terdapat rating yang bernilai 0, pada dasarnya rating tidak dimulai dari 0 melainkan dari satu. penyebab rating 0 bisa berbagai hal seperti pengguna tidak mengisi penilaian sehingga sistem akan memasukan nilai 0. untuk itu akan melakukan penghapusan juga pada data yang memiliki rating 0.
+
+Selain dengan cara menghapus missing value pada data, terdapat cara lain dengan menggunakan imputasi. Imputasi yaitu mengisi nilai yang kosong dengan cara tertentu seperti mean atau modus (nilai yang sering keluar). untuk menggunakan dengan cara mean atau modus dapat dilihat bagaimana penyebaran datanya.
+
 ### Duplicated
 Pada sebuah data bisa terdapat duplikat, karena dalam pemodelan ini hanya akan menggunakan data unik, sehingga akan melakukan pembersihan pada data yang duplikat dengan code berikut:
 ```
@@ -265,17 +270,21 @@ Pada Evaluasi hasil model, mendapatkan hasil sebagai berikut:
 | |F1-Score |1.0|
 
 ### Collaborative Filtering
- Perhitungan nilai akurasi rekomendasi dengan pendekatan Collaborative Filtering dilakukan dengan pendekatan Root Mean Square Error (RMSE). RMSE adalah ukuran perbedaan antara angka (nilai populasi dan sampel) yang sering diterapkan yang diprediksi oleh estimator atau mode. RMSE menggambarkan deviasi standar sampel dari perbedaan antara nilai prediksi dan nilai observasi. Berikut hasil RMSE pada sistem rekomendasi:
+ Perhitungan nilai akurasi rekomendasi dengan pendekatan Collaborative Filtering dilakukan dengan pendekatan Root Mean Square Error (RMSE). RMSE adalah ukuran perbedaan antara angka (nilai populasi dan sampel) yang sering diterapkan yang diprediksi oleh estimator atau mode. RMSE menggambarkan deviasi standar sampel dari perbedaan antara nilai prediksi dan nilai observasi. 
 
 <div>
     <img src="https://github.com/ahdithya/book-recommendation/assets/91508590/c344c37a-ecbe-4dca-b129-1bb196bdfcc6"  style='display: block;
     margin-left: auto;
     margin-right: auto;'/>
   </div><br>
+
+Berikut hasil RMSE pada sistem rekomendasi:
  
 ```
 RMSE = 0.4652476
 ```
+
+Pada hasil RMSE menunjukan rata-rata kesalahan prediksi model terhadap nilai sebenarnya adalah sekitar 0.4652476, yang berarti hasil model cukuplah baik karena semakin mendekati 0 nilai RMSE suatu prediksi maka lebih dekat dengan nilai sebenarnya.
 
 #### REFERENCE 
 [1] SISTEM REKOMENDASI BUKU MENGGUNAKAN METODE ITEM-BASED COLLABORATIVE FILTERING. In Sistem Rekomendasi Buku Menggunakan Metode… 24 Jurnal Masyarakat Informatika (Vol. 9, Issue 2).
